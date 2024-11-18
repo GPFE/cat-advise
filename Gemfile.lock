@@ -149,6 +149,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.16.7-x64-mingw-ucrt)
+      racc (~> 1.4)
     nokogiri (1.16.7-x86-linux)
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-darwin)
@@ -159,6 +161,8 @@ GEM
     parser (3.3.6.0)
       ast (~> 2.4.1)
       racc
+    pg (1.5.9)
+    pg (1.5.9-x64-mingw-ucrt)
     psych (5.2.0)
       stringio
     public_suffix (6.0.1)
@@ -258,6 +262,7 @@ GEM
     sqlite3 (2.2.0-arm-linux-gnu)
     sqlite3 (2.2.0-arm-linux-musl)
     sqlite3 (2.2.0-arm64-darwin)
+    sqlite3 (2.2.0-x64-mingw-ucrt)
     sqlite3 (2.2.0-x86-linux-gnu)
     sqlite3 (2.2.0-x86-linux-musl)
     sqlite3 (2.2.0-x86_64-darwin)
@@ -273,6 +278,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2024.2)
+      tzinfo (>= 1.0.0)
     unicode-display_width (2.6.0)
     useragent (0.16.10)
     web-console (4.2.1)
@@ -296,6 +303,7 @@ PLATFORMS
   arm-linux-gnu
   arm-linux-musl
   arm64-darwin
+  x64-mingw-ucrt
   x86-linux
   x86-linux-gnu
   x86-linux-musl
@@ -311,6 +319,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  pg (~> 1.5)
   puma (>= 5.0)
   rails (~> 7.2.2)
   rubocop-rails-omakase
