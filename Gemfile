@@ -55,3 +55,5 @@ group :test do
 end
 
 gem "pg", "~> 1.5"
+
+gem "devise", "~> 4.9"
