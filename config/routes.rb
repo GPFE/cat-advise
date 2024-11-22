@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :posts, shallow: true do
     resources :comments
+    resources :likes
   end
 end
