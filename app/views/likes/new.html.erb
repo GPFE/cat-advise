@@ -1,0 +1,5 @@
+<p>Are you sure?</p>
+<%= form_for [@post, @like] do |form| %>
+    <%= form.hidden_field :is_liked, value: params[:is_liked] %>
+    <%= form.submit "Yes" %>
+<% end %>
