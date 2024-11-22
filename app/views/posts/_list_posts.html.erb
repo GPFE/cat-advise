@@ -1,5 +1,5 @@
 <% posts.each do |post| %>
-    <div class="card">
+    <div class="card mt-1">
         <div class="card-body">
             <div class="card-title">
                 <%= link_to post.name, post_path(post.id) %>
@@ -7,6 +7,7 @@
             <div class="card-text">
                 <%= post.content %>
             </div>
+
                 <% if post.owner_id == current_user.id %>
             <div class="btn bg-light">
                     <%= link_to "edit", edit_post_path(post.id) %>
@@ -15,6 +16,15 @@
                     <%= link_to "delete", post_path(post.id), data: { "turbo-method": :delete } %>
             </div>
                 <% end %>
+
+            <div class="evaluation" data-controller="like">
+                <button onclick="<%= %>" class="btn bg-light" data-like-target="like" data-action="click->like#like">
+                    <%= render inline: Rails.root.join("app/assets/images/icons/thumb_up.svg").read %>
+                </button>
+                <div class="btn bg-light" data-like-target="dislike" data-action="click->like#dislike">
+                    <%= render inline: Rails.root.join("app/assets/images/icons/thumb_down.svg").read %>
+                </div>
+            </div>
         </div>
     </div>
 <% end %>

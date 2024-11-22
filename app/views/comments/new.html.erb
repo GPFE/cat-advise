@@ -1,2 +1,5 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<%= form_with model: [@post, @comment] do |form| %>
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-control" %>
+    <%= form.submit "Create", class: "btn btn-primary mt-2" %>
+<% end %>

@@ -1,7 +1,36 @@
-<h1><%= @post.name %></h1>
-<p>
-    <%= @post.content%>
-</p>
-<p>owner: <%= link_to User.find(@post.owner_id).email, user_path(User.find(@post.owner_id).id) %></p>
-<p>created: <%= @post.created_at.strftime("%H:%M %Y-%m-%d") %></p>
-<p>modified: <%= @post.updated_at.strftime("%H:%M %Y-%m-%d") %></p>
+<div class="container-fluid text-bg-light border rounded">
+    <h1><%= @post.name %></h1>
+    <p>
+        <%= @post.content%>
+    </p>
+</div>
+<div class="tags m-2">
+<span class="border rounded-pill text-bg-light p-2 m-2">
+    <span>by: </span>
+    <span class="fs-3"><%= render inline: Rails.root.join("app/assets/images/icons/pets.svg").read %></span>
+    <span class="fs-4">
+        <%= link_to User.find(@post.owner_id).email, user_path(User.find(@post.owner_id).id) %>
+    </span>
+</span>
+    <span class="border rounded-pill text-bg-light p-1">created: <%= @post.created_at.strftime("%H:%M %Y-%m-%d") %></span>
+    <% unless @post.updated_at == @post.created_at %>
+    <span class="border rounded-pill text-bg-light p-1">modified: <%= @post.updated_at.strftime("%H:%M %Y-%m-%d") %></span>
+    <% end %>
+</div>
+<div class="comments p-1">
+    <% if @post.comments.first %>
+    <div><%= "comments: " %></div>
+    <% end %>
+    <% @post.comments.each do |comment| %>
+        <div class="comment border border-top-0 rounded m-1 p-1">
+            <div class="d-flex comment rounded p-1 bg-light fs-5">
+                    <div class=""><%= comment.content %></div>
+                    <div class="ms-auto"><%= render inline: Rails.root.join("app/assets/images/icons/edit.svg").read %></div>
+            </div>
+            <div class="author fs-6 text">by: <%= link_to User.find(comment.owner_id).email, user_path(User.find(comment.owner_id).id) %></div>
+        </div>
+    <% end %>
+</div>
+<div class="btn border-primary mt-1">
+    <%= link_to "Comment", new_post_comment_path(params[:id]) %>
+</div>

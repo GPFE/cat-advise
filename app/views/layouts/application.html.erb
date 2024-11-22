@@ -14,11 +14,12 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_include_tag "application", type: "module", defer: true %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-        <div class="fixed-top navbar bg-green rounded-4 p-12 d-flex m-0 justify-content-center text-center">
+  <body class="overflow-y-hidden">
+        <div class="fixed-top navbar bg-green rounded-s4 p-12 d-flex m-0 justify-content-center text-center">
           <div class="nav-item flex-grow-1">
             <%= link_to "Home", posts_path %>
           </div>
@@ -39,16 +40,16 @@
           <% end %>
       </div>
 
-        <div class="container mt-5">
-          <div class="row">
-            <div class="fixed-top top-50 sidebar rounded-4 p-12 col-1">
+        <div class="container m-5">
+          <div class="row p-0">
+            <div class="sidebar rounded-4 col-2">
               <div class="new-post btn btn-primary">
                 <%= link_to new_post_path do %>
                   <%= render inline: Rails.root.join("app/assets/images/icons/add.svg").read %>
                 <% end %>
               </div>
             </div>
-            <div class="rounded-4 p-12x col"><%= yield %></div>
+            <div class="rounded-4 p-4 col view-limit overflow-y-auto"><%= yield %></div>
           </div>
         </div>
   </body>
