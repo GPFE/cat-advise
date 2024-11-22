@@ -11,8 +11,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "posts#index"
-  resources :posts
   devise_for :users
   resources :users, only: [:index, :show]
-  resources :comments
+  resources :posts, shallow: true do
+    resources :comments
+  end
 end
