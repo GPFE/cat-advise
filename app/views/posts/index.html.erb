@@ -1,6 +1,1 @@
-<% @posts.each do |post| %>
-    <div>
-        <%= post.name %>
-        <%= post.content %>
-    </div>
-<% end %>
+<%= render "list_posts", posts: @posts %>

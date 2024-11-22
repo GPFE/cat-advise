@@ -1,0 +1,7 @@
+<%= form_with model: post do |form| %>
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-control" %>
+    <%= form.submit "Create", class: "btn btn-primary mt-2" %>
+<% end %>

@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :influence_followers, class_name: 'UserFollower'
   has_many :influencers, through: :influence_followers, as: :follower, foreign_key: :influencer_id
 
-  has_many :posts, as: :owner
-  has_many :liked_posts, as: :follower
+  has_many :likes
+  has_many :liked_posts, through: :likes
+
+  has_many :posts, foreign_key: :owner_id
 end

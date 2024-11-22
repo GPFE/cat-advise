@@ -1,2 +1,7 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1><%= @post.name %></h1>
+<p>
+    <%= @post.content%>
+</p>
+<p>owner: <%= link_to User.find(@post.owner_id).email, user_path(User.find(@post.owner_id).id) %></p>
+<p>created: <%= @post.created_at.strftime("%H:%M %Y-%m-%d") %></p>
+<p>modified: <%= @post.updated_at.strftime("%H:%M %Y-%m-%d") %></p>
