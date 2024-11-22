@@ -14,7 +14,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    puts params.inspect
     @user = User.find(current_user.id)
     @post = @user.posts.build
     @post = @user.posts.new(get_params)
@@ -24,6 +23,26 @@ class PostsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    puts params.inspect
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update(get_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.delete
   end
 
   private
