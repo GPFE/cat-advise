@@ -7,6 +7,14 @@
             <div class="card-text">
                 <%= post.content %>
             </div>
+                <% if post.owner_id == current_user.id %>
+            <div class="btn bg-light">
+                    <%= link_to "edit", edit_post_path(post.id) %>
+            </div>
+            <div class="btn bg-light">
+                    <%= link_to "delete", post_path(post.id), data: { "turbo-method": :delete } %>
+            </div>
+                <% end %>
         </div>
     </div>
 <% end %>

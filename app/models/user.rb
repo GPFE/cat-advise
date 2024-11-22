@@ -14,4 +14,5 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes
 
   has_many :posts, foreign_key: :owner_id
+  has_many :comments, foreign_key: :owner_id
 end
