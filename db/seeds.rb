@@ -11,3 +11,5 @@
 20.times do
   Post.create(name: Faker::Creature::Cat.breed, content: Faker::Quote.famous_last_words, owner_id: rand(User.all.length + 1))
 end
+
+User.create(email: "ggm@ila.iuu", password: "hhhiii&&&")

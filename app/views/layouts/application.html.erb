@@ -40,16 +40,16 @@
           <% end %>
       </div>
 
-        <div class="container m-5">
+        <div class="container mt-5 justify-content-center">
           <div class="row p-0">
-            <div class="sidebar rounded-4 col-2">
+            <div class="sidebar p-0 rounded-4 col-2">
               <div class="new-post btn btn-primary">
                 <%= link_to new_post_path do %>
                   <%= render inline: Rails.root.join("app/assets/images/icons/add.svg").read %>
                 <% end %>
               </div>
             </div>
-            <div class="rounded-4 p-4 col view-limit overflow-y-auto"><%= yield %></div>
+            <div class="rounded-4 p-2 col view-limit overflow-y-auto"><%= yield %></div>
           </div>
         </div>
   </body>

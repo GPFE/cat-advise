@@ -1,9 +1,12 @@
 <% posts.each do |post| %>
     <div class="card mt-1">
+        <turbo-frame id="post_<%= post.id %>">
         <div class="card-body">
+            <turbo-frame target="_top">
             <div class="card-title">
                 <%= link_to post.name, post_path(post.id) %>
             </div>
+            </turbo-frame>
             <div class="card-text">
                 <%= post.content %>
             </div>
@@ -16,18 +19,26 @@
                     <%= link_to "delete", post_path(post.id), data: { "turbo-method": :delete } %>
             </div>
                 <% end %>
-                <%= current_user.likes.pluck(:post_id) %>
-            <div class="evaluation" data-controller="like">
-                <button class="btn bg-light" data-like-target="like" data-action="click->like#like">
+                <% if @likes.include?(post.id) && current_user.likes.find_by(post_id: post.id).is_liked == true %>
+                <% like_color = "bg-primary" %>
+                <% end %>
+                <% if @likes.include?(post.id) && current_user.likes.find_by(post_id: post.id).is_liked == false %>
+                <% dislike_color = "bg-primary" %>
+                <% end %>
+            <div class="evaluation bg-alert" data-controller="like">
+                <button class="btn <%= like_color %>" data-like-target="like" data-action="click->like#like">
                     <%= link_to new_post_like_path(post_id: post.id, is_liked: true) do %>
                     <%= render inline: Rails.root.join("app/assets/images/icons/thumb_up.svg").read %>
                     <% end %>
                 </button>
-                <div class="btn bg-light" data-like-target="dislike" data-action="click->like#dislike">
+                <button class="btn <%= dislike_color %>" data-like-target="like" data-action="click->like#like">
+                    <%= link_to new_post_like_path(post_id: post.id, is_liked: false) do %>
                     <%= render inline: Rails.root.join("app/assets/images/icons/thumb_down.svg").read %>
-                </div>
+                    <% end %>
+                </button>
             </div>
         </div>
+        </turbo-frame>
     </div>
 <% end %>
 
