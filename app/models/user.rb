@@ -15,6 +15,4 @@ class User < ApplicationRecord
 
   has_many :posts, foreign_key: :owner_id
   has_many :comments, foreign_key: :owner_id
-
-  validates :liked_post, uniqueness: true
 end
