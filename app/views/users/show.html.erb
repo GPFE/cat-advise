@@ -1,2 +1,13 @@
-<%= User.find(params[:id]).email %>
-<%= render template: "posts/_list_posts", locals: {posts: @posts} %>
+<% if @user.id == current_user.id %>
+    <h1><%= "You" %></h1>
+<% end %>
+<div class="border rounded-4 p-3 g-col-6 grid align-items-center overflow-hidden">
+    <div class="row">
+        <div class="border-bottom col">name: <strong><%= @user.username||"Currently without a name" %></strong></div>
+        <div class="border-bottom col">email: <strong><%= @user.email %></strong></div>
+        <%= render template: "posts/_list_posts", locals: {posts: @posts} %>
+    </div>
+    <div class="row">
+        <div class="d-block mt-3"><%= link_to "Like History", user_like_histories_path(current_user.id), class: "d-block text-reset btn btn-warning text-decoration-none" %></div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<% @users.each do |user| %>
+    <div class="card p-2 mt-2 border-0 border-bottom rounded-3">
+        <div class="d-flex gap-3 justify-content-between btn-group-sm">
+            <div class="card-title">
+                <%= link_to user.username, user_path(user.id) %>
+            </div>
+            <div class="btn btn-primary">follow</div>
+        </div>
+        <div class="card-text">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        </div>
+    </div>
+<% end %>

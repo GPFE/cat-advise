@@ -15,4 +15,7 @@ class User < ApplicationRecord
 
   has_many :posts, foreign_key: :owner_id
   has_many :comments, foreign_key: :owner_id
+
+  validates :email, uniqueness: true
+  validates :username, uniqueness: true
 end
