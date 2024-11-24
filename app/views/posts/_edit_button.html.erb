@@ -1,0 +1,5 @@
+<div class="btn-group btn-group-sm bg-light">
+    <%= link_to edit_post_path(post.id), class: "btn btn-secondary" do %>
+        <%= render inline: Rails.root.join("app/assets/images/icons/edit.svg").read %>
+    <% end %>
+</div>

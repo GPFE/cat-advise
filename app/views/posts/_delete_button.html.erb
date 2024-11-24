@@ -1,0 +1,5 @@
+<div class="btn-group btn-group-sm bg-light">
+    <%= link_to post_path(post.id), class: "btn btn-secondary", data: { "turbo-method": :delete } do %>
+        <%= render inline: Rails.root.join("app/assets/images/icons/delete.svg").read %>
+    <% end %>
+</div>
