@@ -1,0 +1,4 @@
+<%= form_with model: [current_user.follow_requests.build] do |form| %>
+    <%= form.hidden_field :receiver_id, value: receiver_id %>
+    <%= form.submit "follow", class: "btn btn-primary" %>
+<% end %>
