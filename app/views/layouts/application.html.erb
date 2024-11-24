@@ -60,8 +60,13 @@
 
               <div class="private d-flex flex-column align-items-center justify-content-center gap-2 col-2">
               <div class="requests btn btn-primary">
-                <%= link_to users_path do %>
+                <%= link_to follow_requests_path do %>
                   <%= render inline: Rails.root.join("app/assets/images/icons/follow_request.svg").read %>
+                <% end %>
+              </div>
+              <div class="friends btn btn-primary">
+                <%= link_to user_subscriptions_path(current_user.id) do %>
+                  <%= render inline: Rails.root.join("app/assets/images/icons/diversity.svg").read %>
                 <% end %>
               </div>
               <div class="settings btn btn-primary">

@@ -1,4 +1,5 @@
-<% @users.each do |user| %>
+<% @follow_requests.each do |request| %>
+<% user = User.find(request.receiver_id) %>
     <div class="card p-2 mt-2 border-0 border-bottom rounded-3">
         <div class="d-flex gap-3 justify-content-between btn-group-sm">
             <div class="card-title">

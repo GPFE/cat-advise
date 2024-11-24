@@ -1,9 +1,9 @@
 <%= turbo_frame_tag post do %>
-    <div class="card p-2 mt-2 border-0 border-bottom rounded-3">
+    <div class="card p-2 mt-2 border-0 border-bottom rounded-3 bg-light bg-gradient">
         <div class="card-title">
-            <turbo-frame target="_top"><%= link_to post.name, post_path(post.id) %></turbo-frame>
+            <turbo-frame target="_top"><%= link_to post.name, post_path(post.id), class: " text-reset text-decoration-none fw-semibold" %></turbo-frame>
         </div>
-        <div class="card-text">
+        <div class="card-text text-secondary text-opacity-75">
             <%= post.content %>
         </div>
 

@@ -18,4 +18,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :username, uniqueness: true
+
+  has_many :follow_requests, foreign_key: :requester
+  has_many :foreign_follow_requests, foreign_key: :receiver
 end

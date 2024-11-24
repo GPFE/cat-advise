@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index, :show] do
     resource :like_histories
+    resources :subscriptions
   end
 
   resources :posts, shallow: true do
@@ -22,4 +23,5 @@ Rails.application.routes.draw do
   end
 
   resources :likes
+  resources :follow_requests
 end

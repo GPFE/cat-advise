@@ -1,0 +1,3 @@
+<%= turbo_frame_tag User.find(@follow_request.receiver_id) do %>
+    <%= render "users/pending_button" %>
+<% end %>
