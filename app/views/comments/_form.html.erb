@@ -1,0 +1,5 @@
+<%= form_with model: [post, comment] do |form| %>
+    <%= form.label :content, "Comment", class: "form-label" %>
+    <%= form.text_area :content, class: "form-control" %>
+    <%= form.submit "Post", class: "btn btn-primary mt-2" %>
+<% end %>

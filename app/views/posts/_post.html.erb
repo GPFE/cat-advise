@@ -1,0 +1,40 @@
+<%= turbo_frame_tag post do %>
+    <div class="card p-2 mt-2 border-0 border-bottom rounded-3">
+        <div class="card-title">
+            <turbo-frame target="_top"><%= link_to post.name, post_path(post.id) %></turbo-frame>
+        </div>
+        <div class="card-text">
+            <%= post.content %>
+        </div>
+
+        <% if current_user.likes.pluck(:post_id).include?(post.id) && current_user.likes.find_by(post_id: post.id).is_liked == true %>
+            <% like_color = "bg-primary" %>
+        <% elsif current_user.likes.pluck(:post_id).include?(post.id) && current_user.likes.find_by(post_id: post.id).is_liked == false %>
+            <% dislike_color = "bg-primary" %>
+        <% end %>
+
+
+            <div class="likes d-flex justify-content-between">
+                <div class="d-flex btn-group btn-group-sm">
+                 <%= render "opinion_button",
+                    post: post,
+                    is_liked: true,
+                    button_color: like_color,
+                    icon: "thumb_up",
+                    rounding: "start" %>
+                <%= render "opinion_button",
+                    post: post,
+                    is_liked: false,
+                    button_color: dislike_color,
+                    icon: "thumb_down",
+                    rounding: "end" %>
+                </div>
+        <div class="d-flex gap-2 justify-content-end">
+            <% if post.owner_id == current_user.id %>
+            <%= render "edit_button", post: post %>
+            <%= render "delete_button", post: post %>
+            <% end %>
+        </div>
+    </div>
+</div>
+<% end %>

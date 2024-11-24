@@ -6,7 +6,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @likes = current_user.likes.pluck(:post_id)
   end
 
   def new
@@ -35,10 +34,8 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    if @post.update(get_params)
-      redirect_to root_path
-    else
-      render :edit, status: :unprocessable_entity
+    unless @post.update(get_params)
+      flash[:error] = "Cannot update!"
     end
   end
 

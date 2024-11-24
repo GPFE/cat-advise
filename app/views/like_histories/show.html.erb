@@ -1,9 +1,7 @@
 <div class="grid align-items-center p-2">
 <% @likes.each do |like| %>
-<% @dislikes.each do |dislike| %>
 <%# removing likes doesn't work %>
-    <div class="row">
-        <div class="col border rounded-start-pill">
+        <div class="border rounded-pill">
             <%= render inline: Rails.root.join("app/assets/images/icons/thumb_up.svg").read %>
             <%= link_to Post.find(like.post_id).name, posts_path(like.post_id) %>
             by: <%= link_to User.find(Post.find(like.post_id).owner_id).username, user_path(User.find(Post.find(like.post_id).owner_id)) %>
@@ -11,7 +9,9 @@
                 <%= render inline: Rails.root.join("app/assets/images/icons/delete.svg").read %>
             <% end %>
         </div>
-        <div class="col border rounded-end-pill">
+<% end %>
+<% @dislikes.each do |dislike| %>
+        <div class="border rounded-pill">
             <%= render inline: Rails.root.join("app/assets/images/icons/thumb_down.svg").read %>
             <%= link_to Post.find(dislike.post_id).name, posts_path(dislike.post_id) %>
             by: <%= link_to User.find(Post.find(dislike.post_id).owner_id).username, user_path(User.find(Post.find(dislike.post_id).owner_id)) %>
@@ -19,7 +19,5 @@
                 <%= render inline: Rails.root.join("app/assets/images/icons/delete.svg").read %>
             <% end %>
         </div>
-    </div>
-<% end %>
 <% end %>
 </div>

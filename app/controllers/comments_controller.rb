@@ -23,8 +23,8 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
 
-    if @comment.update(get_params)
-      redirect_to post_path(params[:id])
+    unless @comment.update(get_params)
+      flash[:error] = "Cannot update your comment!"
     end
   end
 

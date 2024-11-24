@@ -23,22 +23,7 @@
     <div><%= "comments: " %></div>
     <% end %>
     <% @post.comments.each do |comment| %>
-        <turbo-frame id="comment_<%= comment.id %>">
-            <div class="comment border border-top-0 rounded m-1 p-1">
-            <div class="d-flex comment rounded p-2 bg-light fs-5 btn-group-sm">
-                    <div><%= comment.content %></div>
-                    <div class="ms-auto btn btn-secondary">
-                    <% if comment.owner_id == current_user.id %>
-                    <%= link_to edit_comment_path(comment.id) do %>
-                    <%= render inline: Rails.root.join("app/assets/images/icons/edit.svg").read %>
-                    <% end %>
-                    <% end %>
-                    </div>
-            </div>
-            <% username = User.find(comment.owner_id).id == current_user.id ? "You" : User.find(comment.owner_id).username %>
-            <div class="author fs-6 text">by: <%= link_to username, user_path(User.find(comment.owner_id).id) %></div>
-            </turbo-frame>
-        </div>
+        <%= render "shared/comment", comment: comment %>
     <% end %>
 </div>
 <turbo-frame id="comment">
