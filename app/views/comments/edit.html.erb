@@ -1,0 +1,6 @@
+<turbo-frame id="comment_<%= @comment.id %>">
+    <%= form_with model: [@comment] do |form| %>
+        <%= form.text_area :content, class: "form-control" %>
+        <%= form.submit "Update", class: "btn btn-primary mt-2" %>
+    <% end %>
+</turbo-frame>
