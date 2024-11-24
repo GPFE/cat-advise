@@ -28,10 +28,10 @@
 
           <% unless current_user %>
           <div class="nav-item flex-grow-1 btn btn-primary">
-            <%= link_to "log in", new_user_session_path, class: "d-block" %>
+            <%= link_to "log in", new_user_session_path, class: "d-block text-reset text-decoration-none" %>
           </div>
           <div class="nav-item flex-grow-1 btn btn-primary">
-            <%= link_to "register", new_user_registration_path, class: "d-block" %>
+            <%= link_to "register", new_user_registration_path, class: "d-block text-reset text-decoration-none" %>
           </div>
           <% end %>
 
