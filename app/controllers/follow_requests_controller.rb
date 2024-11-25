@@ -4,7 +4,7 @@ class FollowRequestsController < ApplicationController
 
   def index
     @follow_requests = current_user.follow_requests
-    @foreign_follow_requests = current_user.follow_requests.where("requester_id != ?", current_user.id)
+    @foreign_follow_requests = current_user.foreign_follow_requests
 
     if params[:foreign_requests]
       @requests = @foreign_follow_requests

@@ -16,13 +16,13 @@
 
             <div class="likes d-flex justify-content-between">
                 <div class="d-flex btn-group btn-group-sm">
-                 <%= render "opinion_button",
+                 <%= render "posts/opinion_button",
                     post: post,
                     is_liked: true,
                     button_color: like_color,
                     icon: "thumb_up",
                     rounding: "start" %>
-                <%= render "opinion_button",
+                <%= render "posts/opinion_button",
                     post: post,
                     is_liked: false,
                     button_color: dislike_color,
@@ -31,8 +31,8 @@
                 </div>
         <div class="d-flex gap-2 justify-content-end">
             <% if post.owner_id == current_user.id %>
-            <%= render "edit_button", post: post %>
-            <%= render "delete_button", post: post %>
+            <%= render "posts/edit_button", post: post %>
+            <%= render "posts/delete_button", post: post %>
             <% end %>
         </div>
     </div>
