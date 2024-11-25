@@ -64,3 +64,6 @@ gem "jsbundling-rails", "~> 1.3"
 
 gem "cssbundling-rails", "~> 1.4"
 gem "faker", "~> 3.5"
+gem 'omniauth-google-oauth2'
+gem 'omniauth'
+gem "omniauth-rails_csrf_protection"

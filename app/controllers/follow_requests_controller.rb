@@ -9,7 +9,7 @@ class FollowRequestsController < ApplicationController
     if params[:foreign_requests]
       @requests = @foreign_follow_requests
 
-    @foreign_follow_requests_btn_c = "bg-primary text-white"
+      @foreign_follow_requests_btn_c = "bg-primary text-white"
       @follow_requests_btn_c = ""
     else
       @requests = @follow_requests
