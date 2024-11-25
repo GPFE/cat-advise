@@ -59,6 +59,7 @@
               </div>
 
               <div class="private d-flex flex-column align-items-center justify-content-center gap-2 col-2">
+              <% if current_user %>
               <div class="requests btn btn-primary">
                 <%= link_to follow_requests_path do %>
                   <%= render inline: Rails.root.join("app/assets/images/icons/follow_request.svg").read %>
@@ -78,6 +79,7 @@
                 <%= render inline: Rails.root.join("app/assets/images/icons/logout.svg").read %>
               <% end %>
               </div>
+              <% end %>
               </div>
             </div>
             <div class="rounded-4 border p-2 col view-limit overflow-y-auto"><%= yield %></div>
