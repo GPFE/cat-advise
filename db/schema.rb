@@ -51,12 +51,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_25_143107) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.string "name"
+    t.string "content"
     t.bigint "owner_id"
     t.bigint "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "content"
   end
 
   create_table "user_followers", force: :cascade do |t|
