@@ -1,9 +1,19 @@
-<% @follow_requests.each do |request| %>
+<div class="navbar bg-body-light bg-gradient">
+    <div class="container justify-content-center gap-2">
+        <div class="btn btn-outline-primary p-0 col <%= @follow_requests_btn_c %>">
+            <%= link_to "My requests", url_for, class: "d-div text-decoration-none text-reset d-block" %>
+        </div>
+        <div class="btn btn-outline-primary p-0 col <%= @foreign_follow_requests_btn_c %>">
+            <%= link_to "Foreign requests", url_for(foreign_requests: true), class: "d-block text-decoration-none text-reset" %>
+        </div>
+    </div>
+</div>
+<% @requests.each do |request| %>
 <% user = User.find(request.receiver_id) %>
-    <div class="card p-2 mt-2 border-0 border-bottom rounded-3">
+    <div class="card p-2 mt-2 border-0 border-bottom rounded-3 bg-light bg-gradient">
         <div class="d-flex gap-3 justify-content-between btn-group-sm">
             <div class="card-title">
-                <%= link_to user.username, user_path(user.id) %>
+                <%= link_to user.username, user_path(user.id), class: " text-reset text-decoration-none fw-semibold" %>
             </div>
             <div>
                 <%= turbo_frame_tag user do %>
@@ -15,7 +25,7 @@
                 <% end %>
             </div>
         </div>
-        <div class="card-text">
+        <div class="card-text text-secondary text-opacity-75">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         </div>
     </div>

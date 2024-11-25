@@ -20,5 +20,5 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
 
   has_many :follow_requests, foreign_key: :requester
-  has_many :foreign_follow_requests, foreign_key: :receiver
+  has_many :foreign_follow_requests, foreign_key: :receiver, class_name: 'FollowRequest'
 end
