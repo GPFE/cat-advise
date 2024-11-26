@@ -27,6 +27,11 @@ class FollowRequestsController < ApplicationController
     end
   end
 
+  def destroy
+    FollowRequest.find(params[:id]).delete
+  end
+
+
   private
 
   def get_params
