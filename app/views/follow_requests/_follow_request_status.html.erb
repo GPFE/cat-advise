@@ -1,0 +1,7 @@
+<%= turbo_frame_tag user do %>
+    <% if current_user.follow_requests.pluck(:receiver_id).include?(user.id) %>
+        <%= render "shared/pending_button" %>
+    <% else %>
+        <%= render "follow_requests/request", receiver_id: user.id %>
+    <% end %>
+<% end %>

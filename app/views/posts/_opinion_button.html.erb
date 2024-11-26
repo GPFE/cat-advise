@@ -1,7 +1,7 @@
 <%= form_with model: post.likes.build, url: likes_path, class: "btn-group btn-group-sm", method: :post, local: true do |form| %>
     <%= form.hidden_field :post_id, value: post.id %>
     <%= form.hidden_field :is_liked, value: is_liked %>
-    <%= button_tag(class: "#{button_color} btn btn-secondary like_button rounded-#{rounding}-pill") do %>
+    <%= button_tag(class: "#{button_color} btn btn-secondary like_button rounded-#{rounding}-pill", style: "padding-top: 2px !important; padding-bottom: 2px !important;  padding-left: 4px !important;  padding-right: 4px !important; ") do %>
         <%= render inline: Rails.root.join("app/assets/images/icons/#{icon}.svg").read %>
     <% end %>
 <% end %>

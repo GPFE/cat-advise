@@ -39,6 +39,9 @@
                 </div>
                 </div>
             </div>
+                <div class="likes text-secondary text-opacity-75 col d-flex justify-content-end align-items-end">
+                    <%= pluralize(post.likes.pluck(:id).count, 'like') %>
+                </div>
         </div>
 </div>
 <% end %>
