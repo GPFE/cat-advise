@@ -1,0 +1,8 @@
+<div>
+    <div class="btn-group btn-group-small">
+        <%= button_to follow_request_path(request.id), method: :delete, data: { turbo: false }, class: "btn btn-danger" do %>
+            <%= render inline: Rails.root.join("app/assets/images/icons/close.svg").read %>
+        <% end %>
+        <%= render "subscriptions/accept_button", request: request %>
+    </div>
+</div>

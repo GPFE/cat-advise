@@ -5,11 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-  has_many :user_followers
-  has_many :followers, through: :user_followers, as: :influencer
+  has_many :user_followers, foreign_key: :follower_id
+  has_many :followers, through: :user_followers, source: :follower
 
-  has_many :influence_followers, class_name: 'UserFollower'
-  has_many :influencers, through: :influence_followers, as: :follower, foreign_key: :influencer_id
+  has_many :influence_followers, class_name: 'UserFollower', foreign_key: :influencer_id
+  has_many :influencers, through: :influence_followers, source: :influencer
 
   has_many :likes
   has_many :liked_posts, through: :likes

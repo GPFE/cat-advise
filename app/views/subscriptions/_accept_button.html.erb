@@ -1,0 +1,6 @@
+<%= form_with url: user_subscriptions_path(current_user.id), method: :create, class: "btn-group btn-group-small" do |form| %>
+    <%= hidden_field_tag 'user[follower_id]', request.requester_id %>
+    <%= button_tag class: "btn btn-primary" do %>
+            <%= render inline: Rails.root.join("app/assets/images/icons/check.svg").read %>
+    <% end %>
+<% end %>

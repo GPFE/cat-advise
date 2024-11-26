@@ -5,7 +5,7 @@
                 <%= link_to user.username, user_path(user.id), class: " text-reset text-decoration-none fw-semibold" %>
             </div>
             <div>
-                <%= render "follow_request_status", user: user %>
+                <%= params[:foreign_requests] ? (render("follow_request_controls", request: request)) : (render("follow_request_status", user: user)) %>
             </div>
         </div>
         <div class="card-text text-secondary text-opacity-76">
