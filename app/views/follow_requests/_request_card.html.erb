@@ -1,0 +1,14 @@
+<% user = params[:foreign_requests] ? User.find(request.requester_id) : User.find(request.receiver_id)%>
+    <div class="card p-2 mt-2 border-0 border-bottom rounded-3 bg-light bg-gradient">
+        <div class="d-flex gap-3 justify-content-between btn-group-sm">
+            <div class="card-title">
+                <%= link_to user.username, user_path(user.id), class: " text-reset text-decoration-none fw-semibold" %>
+            </div>
+            <div>
+                <%= render "follow_request_status", user: user %>
+            </div>
+        </div>
+        <div class="card-text text-secondary text-opacity-76">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        </div>
+    </div>

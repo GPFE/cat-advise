@@ -9,24 +9,5 @@
     </div>
 </div>
 <% @requests.each do |request| %>
-<% user = User.find(request.receiver_id) %>
-    <div class="card p-2 mt-2 border-0 border-bottom rounded-3 bg-light bg-gradient">
-        <div class="d-flex gap-3 justify-content-between btn-group-sm">
-            <div class="card-title">
-                <%= link_to user.username, user_path(user.id), class: " text-reset text-decoration-none fw-semibold" %>
-            </div>
-            <div>
-                <%= turbo_frame_tag user do %>
-                    <% if current_user.follow_requests.pluck(:receiver_id).include?(user.id) %>
-                        <%= render "shared/pending_button" %>
-                    <% else %>
-                        <%= render "follow_requests/request", receiver_id: user.id %>
-                    <% end %>
-                <% end %>
-            </div>
-        </div>
-        <div class="card-text text-secondary text-opacity-75">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        </div>
-    </div>
+    <%= render "request_card", request: request %>
 <% end %>
