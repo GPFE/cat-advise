@@ -1,11 +1,11 @@
 class SubscriptionsController < ApplicationController
   def index
-    @influencers = current_user.influencers
-
-    if params[:subscriber]
+    if params[:followers]
       @follow_button = ""
       @subscriber_button = "bg-primary text-white"
+      @influencers = current_user.followers
     else
+      @influencers = current_user.influencers
       @subscriber_button = ""
       @follow_button = "bg-primary text-white"
     end
@@ -23,7 +23,6 @@ class SubscriptionsController < ApplicationController
       redirect_to root_path
       flash[:success] = "Accepted new follow request."
     else
-      puts params.inspect
       flash[:failure] = "Error while trying to accept new follow request."
     end
   end
