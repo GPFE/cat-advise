@@ -1,7 +1,23 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
     @likes = current_user.likes.pluck(:post_id)
+
+    if params[:recent]
+      @posts = []
+
+      Post.all.each do |post|
+        if current_user.followers.pluck(:id).include?(post.owner_id)
+          @posts << post
+        end
+      end
+
+      @recent_button = "btn btn-primary text-white"
+      @all_button = ""
+    else
+      @posts = Post.all
+      @recent_button = ""
+      @all_button = "btn btn-primary text-white"
+    end
   end
 
   def show
@@ -21,7 +37,9 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to root_path
+      flash[:success] = "Message saved."
     else
+      flash.now[:failure] = "Cannot be saved!"
       render :new, status: :unprocessable_entity
     end
   end

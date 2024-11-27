@@ -1,1 +1,11 @@
+<div class="navbar bg-body-light bg-gradient">
+    <div class="container justify-content-center gap-2 btn-group btn-group-sm p-2">
+        <div class="btn btn-outline-primary p0 col rounded-2 <%= @all_button %>">
+            <%= link_to "All", posts_path, class: "d-block text-decoration-none text-reset" %>
+        </div>
+        <div class="btn btn-outline-primary p0 col rounded-2 <%= @recent_button %>">
+            <%= link_to "Recommended", posts_path(recent: true), class: "d-block text-decoration-none text-reset" %>
+        </div>
+    </div>
+</div>
 <%= render "list_posts", posts: @posts %>
