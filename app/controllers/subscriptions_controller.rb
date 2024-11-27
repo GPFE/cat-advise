@@ -1,6 +1,14 @@
 class SubscriptionsController < ApplicationController
   def index
     @influencers = current_user.influencers
+
+    if params[:subscriber]
+      @follow_button = ""
+      @subscriber_button = "bg-primary text-white"
+    else
+      @subscriber_button = ""
+      @follow_button = "bg-primary text-white"
+    end
   end
 
   def new

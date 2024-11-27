@@ -1,3 +1,13 @@
+<div class="navbar bg-body-light bg-gradient">
+    <div class="container justify-content-center gap-2 btn-group btn-group-sm p-2">
+        <div class="btn btn-outline-primary p0 col rounded-2 <%= @follow_button %>">
+            <%= link_to "Followed", user_subscriptions_path, class: "d-block text-decoration-none text-reset" %>
+        </div>
+        <div class="btn btn-outline-primary p0 col rounded-2 <%= @subscriber_button %>">
+            <%= link_to "Subscribers", user_subscriptions_path(followers: true), class: "d-block text-decoration-none text-reset" %>
+        </div>
+    </div>
+</div>
 <% @influencers.each do |influencer| %>
     <%= render "users/user_card", user: influencer %>
 <% end %>
