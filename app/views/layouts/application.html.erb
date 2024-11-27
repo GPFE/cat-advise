@@ -19,6 +19,11 @@
   </head>
 
   <body class="overflow-y-hidden">
+        <div class="fixed-top" style="transform: translateY(100%) !important;">
+        <% flash.each do |type, message| %>
+          <div class="<%= type == "success" ? "alert-success" : "alert-danger" %> alert"><%= type %>: <%= message %></div>
+          <% end %>
+        </div>
         <div class="fixed-top navbar bg-light bg-gradient rounded-s4 p-12 d-flex m-0 justify-content-around text-center px-5 btn-group-sm text-primary" style="gap: 0.5rem !important">
           <div class="nav-item flex-grow-1 btn btn-outline-primary text-primary <%= if params[:controller] == "posts" && params[:action] == "index"; "bg-primary text-white"; else; "btn-secondary text-white";end %>">
             <%= link_to posts_path, class: "d-block" do %>

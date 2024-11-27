@@ -22,8 +22,10 @@ class FollowRequestsController < ApplicationController
   def create
     @follow_request = current_user.follow_requests.build(get_params)
 
-    unless @follow_request.save
-      flash[:error] = "Cannot follow!"
+    if @follow_request.save
+      flash.now[:success] = "Follow sent."
+    else
+      flash.now[:failure] = "Cannot follow!"
     end
   end
 
