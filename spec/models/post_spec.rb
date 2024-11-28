@@ -1,14 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # pending "add some examples to (or delete) #{__FILE__}"
+  describe "post columns" do
+    post = FactoryBot.build(:post, name: "Norwegian cat", content: "My favorite content.", owner_id: 1)
 
-  describe Post.new
-  it "returns the posts name" do
-    post = build(:post, "Norwegian cat")
+    it "returns the name" do
+      expect(post.name).to eq "Norwegian cat"
+    end
 
-    expect(post.name).to eq "Norwegian cat"
+    it "returns the content" do
+      expect(post.content).to eq "My favorite content."
+    end
   end
 
+  describe "post associations" do
+    it "returns user" do
+      owner = FactoryBot.create(:user, username: "Joe")
+      post = FactoryBot.create(:post, owner: owner)
 
+      expect(post.owner).to be_a(User)
+    end
+  end
 end
