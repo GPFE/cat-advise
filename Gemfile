@@ -58,6 +58,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'database_cleaner-active_record'
 end
 
 gem "pg", "~> 1.5"
@@ -73,4 +74,3 @@ gem "faker", "~> 3.5"
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
 gem "omniauth-rails_csrf_protection"
-
