@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+	
+      - name: Give execute permission to brakeman
+	uses: chmod +x bin/brakeman
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
