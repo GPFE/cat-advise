@@ -16,10 +16,17 @@ RSpec.describe Post, type: :model do
 
   describe "post associations" do
     it "returns user" do
-      owner = FactoryBot.create(:user, username: "Joe")
+      owner = FactoryBot.create(:user)
       post = FactoryBot.create(:post, owner: owner)
 
       expect(post.owner).to be_a(User)
+    end
+
+    it "can have many users who liked it" do
+      users = FactoryBot.create_list(:user, 10)
+      post = FactoryBot.create(:post, users: users)
+
+      expect(post.users.length).to eq(10)
     end
   end
 end
