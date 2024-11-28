@@ -41,11 +41,17 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "guard"
 end
 
 group :test do
@@ -67,3 +73,4 @@ gem "faker", "~> 3.5"
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
 gem "omniauth-rails_csrf_protection"
+
